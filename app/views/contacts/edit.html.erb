@@ -1,0 +1,6 @@
+<h1>Editing Contact</h1>
+
+<%= render 'form', contact: @contact %>
+
+<%= link_to 'Show', [@user, @contact] %> |
+<%= link_to 'Back', user_contacts_path(@user) %>
