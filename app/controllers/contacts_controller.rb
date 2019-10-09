@@ -11,15 +11,18 @@ class ContactsController < ApplicationController
   # GET /contacts/1
   # GET /contacts/1.json
   def show
+    set_contact
   end
 
   # GET /contacts/new
   def new
     @contact = Contact.new
+    4.times { @contact.phones.build }
   end
 
   # GET /contacts/1/edit
   def edit
+    set_contact
   end
 
   # POST /contacts
@@ -74,6 +77,6 @@ class ContactsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contact_params
-      params.require(:contact).permit(:name)
-    end
+      params.require(:contact).permit(:name, phones_attributes: [:number, :_destroy, :id])
+    end    
 end
